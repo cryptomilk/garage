@@ -185,8 +185,8 @@ def create_config():
         print(f"✓ Existing .env file backed up to {backup_file}")
 
     with open(env_file, "w", encoding="utf-8") as f:
-        f.write(f"GF_SECURITY_ADMIN_USER={grafana_config['admin_user']}\n")
-        f.write(f"GF_SECURITY_ADMIN_PASSWORD={grafana_config['admin_password']}\n")
+        f.write(f"GF_SECURITY_ADMIN_USER=\"{grafana_config['admin_user']}\"\n")
+        f.write(f"GF_SECURITY_ADMIN_PASSWORD=\"{grafana_config['admin_password']}\"\n")
 
     print(f"✓ Grafana credentials saved to {env_file}")
 
