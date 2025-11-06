@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  carconnectivity:
+    build:
+      context: .
+      dockerfile: Containerfile
+    container_name: carconnectivity
+    networks:
+      - carconnectivity-network
+    volumes:
+      - ./config:/app/config:ro
+      - carconnectivity-data:/app
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+
+  grafana:
+    build:
+      context: .
+      dockerfile: Containerfile.grafana
+    container_name: grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - carconnectivity-data:/home/grafana/.carconnectivity:ro
+    networks:
+      - carconnectivity-network
+    ports:
+      - "3000:3000"
+    depends_on:
+      - carconnectivity
+    restart: unless-stopped
+
+networks:
+  carconnectivity-network:
+    driver: bridge
+
+volumes:
+  carconnectivity-data:
+  grafana-data:

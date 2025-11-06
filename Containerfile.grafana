@@ -1,0 +1,34 @@
+FROM grafana/grafana:12.1.0
+
+USER root
+
+RUN apk add --no-cache git && \
+    git clone https://github.com/tillsteinbach/CarConnectivity-grafana.git /tmp/CarConnectivity-grafana && \
+    mkdir -p /etc/grafana/provisioning && \
+    mkdir -p /var/lib/grafana-static/dashboards && \
+    mkdir -p /usr/share/grafana/public/img && \
+    cp -r /tmp/CarConnectivity-grafana/config/grafana/provisioning/* /etc/grafana/provisioning/ && \
+    cp -r /tmp/CarConnectivity-grafana/dashboards/* /var/lib/grafana-static/dashboards/ && \
+    cp -r /tmp/CarConnectivity-grafana/public/img/* /usr/share/grafana/public/img/ && \
+    rm -rf /tmp/CarConnectivity-grafana && \
+    apk del git
+
+USER grafana
+
+ENV GF_LOG_LEVEL=info
+ENV GF_SECURITY_ADMIN_USER=admin
+ENV GF_SECURITY_ADMIN_PASSWORD=admin
+ENV GF_USERS_ALLOW_SIGN_UP=false
+ENV GF_INSTALL_PLUGINS="frser-sqlite-datasource"
+ENV GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=
+ENV GF_PLUGINS_ENABLE_ALPHA=true
+ENV GF_SERVER_ENABLE_GZIP=true
+ENV GF_EXPLORE_ENABLED=false
+ENV GF_ALERTING_ENABLED=false
+ENV GF_METRICS_ENABLED=false
+ENV GF_EXPRESSIONS_ENABLED=false
+ENV GF_PLUGINS_PLUGIN_ADMIN_ENABLED=false
+ENV GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH="/var/lib/grafana-static/dashboards/carconnectivity/CarConnectivity/overview.json"
+ENV GF_FEATURE_TOGGLES_ENABLE="newPanelChromeUI,topNavCommandPalette"
+
+EXPOSE 3000
