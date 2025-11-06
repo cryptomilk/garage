@@ -62,8 +62,8 @@ def get_vw_skoda_credentials():
     """Get username and password for VW/Skoda connectors."""
     username = input("Enter username/email: ").strip()
     password = getpass("Enter password: ")
-    interval = input("Enter polling interval in seconds (default: 180): ").strip()
-    interval = int(interval) if interval else 180
+    interval = input("Enter polling interval in seconds (default: 300): ").strip()
+    interval = int(interval) if interval else 300
 
     return {
         "username": username,
