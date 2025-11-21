@@ -93,10 +93,11 @@ The following volumes are created for persistent data:
 ### Polling Intervals
 
 Default polling intervals by connector type:
-- **VW/Skoda/Audi/Seat/Volvo**: 180 seconds (3 minutes)
+- **VW/Skoda/Audi/Seat/Volvo**: 300 seconds (5 minutes)
 - **Tronity**: 60 seconds (1 minute)
 
-You can customize these during configuration setup.
+You can customize these during configuration setup. Note that the API
+endpoints are rate limited, better do not go lower than the defaults.
 
 ### Log Levels
 
