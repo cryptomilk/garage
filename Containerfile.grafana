@@ -2,8 +2,10 @@ FROM grafana/grafana:12.1.0
 
 USER root
 
+# Use my repo and branch till we get it merged upstream
+# git clone https://github.com/tillsteinbach/CarConnectivity-grafana.git /tmp/CarConnectivity-grafana && \
 RUN apk add --no-cache git && \
-    git clone https://github.com/tillsteinbach/CarConnectivity-grafana.git /tmp/CarConnectivity-grafana && \
+    git clone --branch=asn-wip https://github.com/cryptomilk/CarConnectivity-grafana.git /tmp/CarConnectivity-grafana && \
     mkdir -p /etc/grafana/provisioning && \
     mkdir -p /var/lib/grafana-static/dashboards && \
     mkdir -p /usr/share/grafana/public/img && \
