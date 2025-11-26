@@ -27,7 +27,7 @@ services:
     networks:
       - carconnectivity-network
     ports:
-      - "3000:3000"
+      - "6000:3000"
     depends_on:
       - carconnectivity
     restart: unless-stopped
