@@ -6,7 +6,8 @@ USER root
 # git clone https://github.com/tillsteinbach/CarConnectivity-grafana.git /tmp/CarConnectivity-grafana && \
 RUN apk add --no-cache git && \
     git clone --branch=asn-grafana-sqlite https://github.com/cryptomilk/CarConnectivity-grafana.git /tmp/CarConnectivity-grafana && \
-    mkdir -p /etc/grafana/provisioning && \
+    mkdir -p /etc/grafana/provisioning/alerting && \
+    mkdir -p /etc/grafana/provisioning/plugins && \
     mkdir -p /var/lib/grafana-static/dashboards && \
     mkdir -p /usr/share/grafana/public/img && \
     cp -r /tmp/CarConnectivity-grafana/config/grafana/provisioning/* /etc/grafana/provisioning/ && \
