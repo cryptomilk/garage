@@ -176,13 +176,13 @@ def create_config():
 
     print(f"✓ Configuration saved to {config_file}")
 
-    # Write Grafana credentials to .env file
-    env_file = Path(".env")
+    # Write Grafana credentials to .env-grafana file
+    env_file = Path(".env-grafana")
     if env_file.exists():
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        backup_file = Path(f".env.backup_{timestamp}")
+        backup_file = Path(f".env-grafana.backup_{timestamp}")
         shutil.copy2(env_file, backup_file)
-        print(f"✓ Existing .env file backed up to {backup_file}")
+        print(f"✓ Existing .env-grafana file backed up to {backup_file}")
 
     with open(env_file, "w", encoding="utf-8") as f:
         f.write(f"GF_SECURITY_ADMIN_USER=\"{grafana_config['admin_user']}\"\n")
