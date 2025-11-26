@@ -66,7 +66,7 @@ Once the services are running, you can access:
 | Interface | URL | Port | Description |
 |-----------|-----|------|-------------|
 | **WebUI** | http://localhost:4000 | 4000 | Car connectivity web interface (login with WebUI credentials) |
-| **Grafana** | http://localhost:6000 | 6000 | Data visualization dashboard (login with Grafana credentials) |
+| **Grafana** | http://localhost:4001 | 4001 | Data visualization dashboard (login with Grafana credentials) |
 
 ## Services
 
@@ -80,7 +80,7 @@ Once the services are running, you can access:
 - Visualization and dashboard platform
 - Connects to the carconnectivity database
 - Pre-configured to access car data
-- Accessible on port 6000
+- Accessible on port 4001
 
 ## Data Persistence
 
