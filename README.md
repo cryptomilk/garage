@@ -3,6 +3,9 @@
 A containerized solution for connecting to your car's API and visualizing data
 with Grafana.
 
+This project is made possible thanks to Till Steinbach's
+[CarConnectivity](https://github.com/tillsteinbach/CarConnectivity) project.
+
 ## Supported Car Brands
 
 - Audi
